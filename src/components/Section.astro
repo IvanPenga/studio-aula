@@ -1,0 +1,48 @@
+---
+import classNames from "classnames";
+
+const backgroundColorVariants = {
+  primary: "bg-primary",
+  secondary: "bg-primary-300",
+} as const;
+
+const horizontalPagePaddingVariants = {
+  all: "horizontal-page-paddings",
+  md: "horizontal-page-paddings-md",
+} as const;
+
+type SectionProperties = {
+  headline?: string;
+  className?: string;
+  contentClassName?: string;
+  variant?: keyof typeof backgroundColorVariants;
+  horizontalPagePaddings?: keyof typeof horizontalPagePaddingVariants;
+};
+
+type Props = astroHTML.JSX.HTMLAttributes & SectionProperties;
+
+const {
+  headline,
+  className,
+  contentClassName,
+  variant = "primary",
+  horizontalPagePaddings = "all",
+  ...properties
+} = Astro.props;
+---
+
+<section
+  class={classNames(backgroundColorVariants[variant], className)}
+  {...properties}
+>
+  <div
+    class={classNames(
+      horizontalPagePaddingVariants[horizontalPagePaddings],
+      "max-content-width py-6 md:py-8 xl:py-10",
+      contentClassName,
+    )}
+  >
+    {headline ? <h2 class="text-center mb-8 text-primary-700">{headline}</h2> : null}
+    <slot />
+  </div>
+</section>

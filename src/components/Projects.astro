@@ -1,0 +1,67 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import Card from "./Card.astro";
+import classNames from "classnames";
+import { promise } from "astro:schema";
+
+const markdownProjects = await getCollection("projects");
+
+const projects = markdownProjects.map((project) => {
+  return {
+    title: project.data.title,
+    description: project.body,
+    imageUrl: project.data.imageUrl,
+    imageAlt: project.data.imageAlt,
+    subtitle: project.data.subtitle,
+    shortDescription: project.data.shortDescription,
+    projectsGridSpan: project.data.projectsGridSpan,
+    slug: `project/${project.id}`,
+  };
+});
+
+const entry = await getEntry("projects", "hello");
+const { Content, headings } = await render(entry);
+
+const classes = {
+  size: 'h-full max-h-[400px] sm:max-h-[250px] md:max-h-[350px] lg:max-h-[450px]',
+}
+
+---
+
+<section class="">
+  <div class="projects-grid">
+    {
+      projects.map((project) => {
+        return (
+          <Card
+            style={{ 'grid-column': `span ${project.projectsGridSpan}` }}
+            title={project.title}
+            imageUrl={project.imageUrl}
+            imageAlt={project.imageAlt}
+            subtitle={project.subtitle}
+            description={project.description}
+            shortDescription={project.shortDescription}
+            slug={project.slug}
+            imageClassName={classNames(classes.size)}
+          />
+        );
+      })
+    }
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../styles/media.scss";
+
+  .projects-grid {
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-flow: dense;
+
+    @include media.query("small") {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-auto-rows: 1fr;
+    }
+  }
+</style>

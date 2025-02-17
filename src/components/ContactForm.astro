@@ -1,0 +1,21 @@
+---
+import classNames from "classnames";
+import Email from "../assets/icons/Email.astro";
+import Input from "./Forms/Input.astro";
+import Submit from "./Forms/Submit.astro";
+import TextArea from "./Forms/TextArea.astro";
+
+const properties = Astro.props;
+---
+
+<div id="contact" class={classNames(properties.className, "m-auto md:max-w-[50%]")}>
+  <form class="flex flex-col gap-y-4">
+    <Input placeholder="Name" id="name" type="text" label="Name" />
+    <Input placeholder="Email" id="email" type="text" label="Email" />
+    <TextArea placeholder="Message" id="message" label="Message" class="h-48"/>
+    <Submit>
+      <Email width={24} height={24} className="inline"/>
+      Send your message
+    </Submit>
+  </form>
+</div>

@@ -1,0 +1,59 @@
+---
+import Building from "./Building.astro";
+---
+
+<div
+  class="border-b-4 border-primary-500 md:w-[75%] m-auto overflow-hidden rounded-3xl bg-primary-300 aspect-video md:aspect-[3/1]"
+>
+  <div class="flex items-end h-full relative top-4">
+    <Building
+      windows={20}
+      windowColumns={4}
+      className="h-[40%] left-[18%] z-30"
+    />
+    <Building
+      windows={21}
+      windowColumns={3}
+      className="h-[70%] left-[17%] z-50"
+    />
+    <Building
+      windows={0}
+      windowColumns={0}
+      className="h-[90%] left-[9%]  z-10"
+    />
+    <Building
+      windows={5}
+      windowColumns={5}
+      className="h-[30%] left-[4%]  z-50"
+    />
+    <Building
+      windows={15}
+      windowColumns={3}
+      className="h-[80%] right-[1%] z-30"
+    />
+    <Building
+      windows={20}
+      orientation="right"
+      windowColumns={4}
+      className="h-[60%] right-[2%] z-50"
+    />
+    <Building
+      windows={0}
+      orientation="right"
+      windowColumns={0}
+      className="h-[80%] right-[11%] z-30"
+    />
+    <Building
+      windows={10}
+      orientation="right"
+      windowColumns={1}
+      className="h-[40%] right-[12%] z-30"
+    />
+    <Building
+      windows={18}
+      orientation="right"
+      windowColumns={3}
+      className="h-[75%] right-[19%] z-10"
+    />
+  </div>
+</div>

@@ -1,0 +1,15 @@
+---
+type Props = astroHTML.JSX.AnchorHTMLAttributes;
+const { class: className, ...properties } = Astro.props;
+---
+
+<a {...properties} class=`anchor hover:text-secondary ${className}`>
+  <slot />
+</a>
+
+<style>
+  .anchor:focus-visible {
+    outline: 1px dotted var(--color-primary-700);
+    outline-offset: 8px;
+  }
+</style>

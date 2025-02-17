@@ -1,0 +1,7 @@
+---
+const properties = Astro.props;
+---
+
+<div class="w-48 h-48" style={{ backgroundColor: `var(--${properties.value})` }}>
+  {properties.value}
+</div>

@@ -1,0 +1,25 @@
+---
+import { changeLanguage } from "i18next";
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPostCard from "../../components/Blog/BlogPostCard.astro";
+
+const markdownBlogPosts = await getCollection("blogPosts");
+const blogPosts = markdownBlogPosts.map((blogPost) => {
+    return {
+        title: blogPost.data.title,
+        slug: blogPost.data.id,
+        description: blogPost.data.description,
+        image: blogPost.data.image,
+    };
+});
+---
+
+<BaseLayout>
+
+  {blogPosts.map((blog) => {
+    return <BlogPostCard />
+  })}
+  This is blog woo
+</BaseLayout>
+

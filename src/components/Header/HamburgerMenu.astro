@@ -1,0 +1,26 @@
+---
+import HamburgerMenuIcon from "../../assets/icons/HamburgerMenu.astro";
+import Drawer from "./Drawer.astro";
+---
+
+<div>
+  <button id="hamburger-menu">
+    <HamburgerMenuIcon />
+  </button>
+  <Drawer />
+</div>
+
+<script>
+  import { reverseBooleanAttribute } from "../attributes/attributes";
+
+  const hamburgerMenuButton = document.getElementById(
+    "hamburger-menu",
+  ) as HTMLButtonElement;
+  const drawer = document.getElementById(
+    "drawer-navigation",
+  ) as HTMLDialogElement;
+
+  hamburgerMenuButton.addEventListener("click", () => {
+    reverseBooleanAttribute(drawer, "data-open");
+  });
+</script>

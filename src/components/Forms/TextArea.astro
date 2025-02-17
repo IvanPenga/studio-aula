@@ -1,0 +1,24 @@
+---
+import classnames from "classnames";
+
+type Props = astroHTML.JSX.TextareaHTMLAttributes & {
+  id: string;
+  label: string;
+};
+
+const { class: className, label, ...properties } = Astro.props;
+---
+
+<div>
+  <label
+    for={properties.id}
+    class="block text-secondary text-sm uppercase mb-1"
+  >
+    {label}
+  </label>
+  <textarea
+    {...properties}
+    style={{ resize: 'none' }}
+    class={classnames(className, "textual-input")}
+  />
+</div>

@@ -1,0 +1,82 @@
+---
+import FlyingDots from "../Canvas/FlyingDots.astro";
+
+const properties = Astro.props;
+const nonBaseStyle = { height: properties.height };
+---
+
+<div class="cube">
+  <div class="face front"><FlyingDots /></div>
+  <div class="face back"></div>
+  <div class="face right"><FlyingDots/></div>
+  <div class="face left"></div>
+  <div class="face top"><FlyingDots /></div>
+  <div class="face bottom"></div>
+</div>
+
+<style lang="scss">
+  @keyframes spin {
+    from {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+    to {
+      transform: rotateX(360deg) rotateY(360deg);
+    }
+  }
+
+  .cube {
+    transform-style: preserve-3d;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform: rotateX(-20deg) rotateY(-25deg);
+  }
+
+  .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+
+    background: white !important;
+  }
+
+  .front {
+    transform: rotateX(0deg) translateZ(100px);
+    background: white;
+  }
+
+  .window {
+    width: 100%;
+    border-radius: 1px;
+    border: 1px solid black;
+    background-color: white;
+    transition: background 0.2s ease-in-out;
+
+    &:hover {
+      background: hwb(49 51% 1%);
+    }
+  }
+
+  .top {
+    background: #dcdcdc;
+    transform: rotateX(90deg) translateZ(100px);
+  }
+
+  .bottom {
+    transform: rotateX(-90deg) translateZ(100px);
+  }
+
+  .right {
+    background: #efefef;
+    transform: rotateY(90deg) translateZ(100px);
+  }
+
+  .left {
+    transform: rotateY(-90deg) translateZ(100px);
+  }
+
+  .back {
+    transform: rotateX(-180deg) translateZ(100px);
+  }
+</style>

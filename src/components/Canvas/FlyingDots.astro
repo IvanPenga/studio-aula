@@ -1,0 +1,41 @@
+---
+import classNames from 'classnames';
+
+type Props = astroHTML.JSX.CanvasHTMLAttributes & {
+  className?: string;
+}
+
+const { className, ...otherProperties } = Astro.props;
+---
+
+<canvas
+  width={800}
+  height={500}
+  data-animated-canvas
+  class={classNames(className)}
+  {...otherProperties}>
+</canvas>
+
+<script>
+  import { initializeVertices } from "./drawing";
+  import { canvasRenderer } from "./canvas";
+
+  const htmlCanvases = document.querySelectorAll<HTMLCanvasElement>(
+    "[data-animated-canvas]"
+  );
+  
+  htmlCanvases.forEach((htmlCanvas) => {
+    const vertices = initializeVertices(7, htmlCanvas.width, htmlCanvas.height);
+    const canvas = canvasRenderer(htmlCanvas, vertices);
+
+    function animationStep() {
+      canvas.clear();
+      canvas.drawEdges();
+      canvas.moveVertices();
+
+      requestAnimationFrame(animationStep);
+    }
+
+    requestAnimationFrame(animationStep);
+  });
+</script>

@@ -1,0 +1,25 @@
+---
+import { changeLanguage } from "i18next";
+import { getCollection, render } from "astro:content";
+import Post from "../../components/Blog/Post.astro";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+    const markdownBlogPosts = await getCollection("blogPosts");
+    return markdownBlogPosts.map((blogPost) => {
+        return {
+            params: { slug: blogPost.id },
+            props: { title: blogPost.data.title, blogPost },
+        };
+    });
+}
+const { slug } = Astro.params;
+const { blogPost, title } = Astro.props;
+const { Content } = await render(blogPost);
+---
+<Layout>
+  <Post title={title} blogPost={blogPost}>
+    <Content />
+  </Post>
+</Layout>
+

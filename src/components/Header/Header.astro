@@ -1,0 +1,31 @@
+---
+import { t } from "i18next";
+import Anchor from "../Anchor.astro";
+import HamburgerMenu from "./HamburgerMenu.astro";
+---
+
+<header class="h-16 flex">
+  <nav class="flex justify-between items-center grow horizontal-page-paddings max-content-width">
+    <Anchor href="/">
+      <img
+        alt="Logo"
+        width="100"
+        height="80"
+        src="/logo.svg"
+        loading="lazy"
+      />
+    </Anchor>
+    <ul class="flex justify-between min-w-[25%]">
+      <li>
+        <Anchor class={"px-1"} href="/blog">Blog</Anchor>
+      </li>
+      <li>
+        <Anchor class={"px-1"} href="/hello">Hello</Anchor>
+      </li>
+      <li>
+        <Anchor class={"px-1"} href="/hello">Hello</Anchor>
+      </li>
+    </ul>
+  </nav>
+</header>
+<div class="border-b"></div>

@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+:root {
+  --max-content-width: 1154px;
+
+  --color-primary-100: #fdf1e4;
+  --color-primary-300: #ffe8d1;
+  --color-primary-500: #c58140;
+  --color-primary-700: #713b08;
+
+  --color-background-primary: white;
+  --color-background-secondary: #fdf1e4;
+
+  --color-text-100: #909090;
+  --color-text-300: #6d6d6d;
+  --color-text-500: #4a4a4a;
+  --color-text-700: #272727;
+  --color-text-900: #000;
+}
+
+@layer base {
+  h1 {
+    @apply text-6xl;
+    @apply font-bold;
+  }
+
+  h2 {
+    @apply text-3xl;
+    @apply font-bold;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+}
+
+@layer utilities {
+  .max-content-width {
+    @apply mx-auto;
+    @apply max-w-[--max-content-width];
+  }
+
+  .horizontal-page-paddings {
+    @apply px-4;
+    @apply md:px-8;
+    @apply xl:px-0;
+  }
+
+  .horizontal-page-paddings-md {
+    @apply md:px-8;
+    @apply xl:px-0;
+  }
+}
+
+@layer components {
+  .decorated-heading {
+    @apply z-0;
+    @apply py-3;
+    @apply px-5;
+    @apply relative;   
+    @apply text-secondary-700;
+    @apply inline-block;
+  }
+
+  .decorated-heading::after {
+    content: "";
+    @apply -skew-x-12;
+    @apply bg-primary-300;
+    @apply absolute;
+    @apply -z-10;
+    @apply inset-0;
+    @apply mx-1.5;
+  }
+
+  .textual-input {
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid;
+    outline-width: 0px;
+    outline-color: antiquewhite;
+    transition: all 0.2s ease-in-out;
+
+    @apply py-2;
+    @apply px-3;
+    @apply rounded-sm;
+    @apply border-primary-500;
+
+    &:focus {
+      @apply border-primary-700;
+    }
+  }
+}
+

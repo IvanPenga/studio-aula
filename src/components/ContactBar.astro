@@ -1,0 +1,20 @@
+---
+import PhoneIcon from "../assets/icons/Phone.astro";
+import EmailIcon from "../assets/icons/Email.astro";
+import companyInfo from "../../configuration/metadata/company-info.json";
+---
+
+<div class="border-b">
+  <div
+    class="horizontal-page-paddings max-content-width text-sm py-0 flex gap-x-6 flex-wrap"
+  >
+    <span>
+      <PhoneIcon class={"inline mr-1"} width={"24px"} height={"30px"} />
+      {companyInfo.phoneNumber}
+    </span>
+    <span>
+      <EmailIcon class={"inline mr-1"} width={"24px"} height={"30px"} />
+      {companyInfo.email}
+    </span>
+  </div>
+</div>

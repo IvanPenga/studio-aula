@@ -1,0 +1,41 @@
+---
+import { changeLanguage } from "i18next";
+import { getCollection, render } from "astro:content";
+import Post from "../../components/Blog/Post.astro";
+import Layout from "../../layouts/Layout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const markdownBlogPosts = await getCollection("projects");
+  return markdownBlogPosts.map((blogPost) => {
+    return {
+      params: { slug: blogPost.id },
+      props: {
+        title: blogPost.data.title,
+        subtitle: blogPost.data.subtitle,
+        imageAlt: blogPost.data.imageAlt,
+        imageUrl: blogPost.data.imageUrl,
+        overline: blogPost.data.overline,
+        blogPost,
+      },
+    };
+  });
+}
+
+const { slug } = Astro.params;
+const { blogPost, title, imageAlt, imageUrl, subtitle, overline } = Astro.props;
+const { Content } = await render(blogPost);
+---
+
+<BaseLayout>
+  <Post
+    title={title}
+    blogPost={blogPost}
+    imageAlt={imageAlt}
+    imageUrl={imageUrl}
+    subtitle={subtitle}
+    overline={overline}
+  >
+    <Content />
+  </Post>
+</BaseLayout>

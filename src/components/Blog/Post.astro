@@ -1,0 +1,24 @@
+---
+import Section from "../Section.astro";
+
+const properties = Astro.props;
+const { title, subtitle, overline, imageAlt, imageUrl } = properties;
+---
+
+<Section>
+  <p class="uppercase text-secondary text-sm mb-2">{overline}</p>
+  <h1 class="mb-2">{title}</h1>
+  <p class="text-base ">{subtitle}</p>
+</Section>
+<div class="max-content-width horizontal-page-paddings-md">
+  <img
+    width={640}
+    height={480}
+    alt={imageAlt}
+    src={imageUrl}
+    class=`object-cover w-full md:rounded-sm`
+  />
+</div>
+<Section>
+  <slot />
+</Section>

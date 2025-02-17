@@ -1,0 +1,7 @@
+---
+const properties = Astro.props;
+---
+
+<div style={{ color: `var(--${properties.value})`}} class={properties.class} >
+  <slot />
+</div>

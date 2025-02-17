@@ -1,0 +1,22 @@
+---
+import classnames from "classnames";
+
+type Props = astroHTML.JSX.InputHTMLAttributes & {
+  id: string;
+  label: string;
+};
+
+const { class: className, label, type, ...properties } = Astro.props;
+---
+
+<div>
+  <label class="block text-secondary text-sm uppercase mb-1" for={properties.id}>
+    {label}
+  </label>
+  <input
+    {...properties}
+    type="text"
+    class={classnames(className, "textual-input")}
+  />
+</div>
+

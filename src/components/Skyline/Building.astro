@@ -1,0 +1,95 @@
+---
+import classNames from "classnames";
+
+type Props = astroHTML.JSX.HTMLAttributes & {
+  windows?: number;
+  className?: string;
+  orientation?: "left" | "right";
+  windowColumns?: number;
+};
+
+const properties = Astro.props;
+
+const {
+  className,
+  windows = 0,
+  orientation = "left",
+  windowColumns = 4,
+  ...otherProperties
+} = properties;
+---
+
+<div
+{...otherProperties}
+class={classNames(
+  "building",
+  { "orientation-right": orientation === "right" },
+  className
+)}
+>
+<div
+  class="left-side"
+  style={{ gridTemplateColumns: `repeat(${windowColumns}, 1fr)` }}
+>
+  {Array(windows).fill(<div class="window" />)}
+</div>
+<div class="right-side"></div>
+</div>
+
+
+<style lang="scss">
+  @use '../../styles/media.scss';
+
+  .orientation-right {
+    transform: rotateY(180deg);
+  }
+
+  .building {
+    width: 100%;
+    display: flex;
+    position: relative;
+  }
+
+  .side {
+    padding: 5% 5% 35% 5%;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 1px;
+
+    @include media.query("medium") {
+      border-width: 4px;
+    }
+  }
+
+  .left-side {
+    @extend .side;
+
+    gap: 5%;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    transform: skewY(-10deg);
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .right-side {
+    @extend .side;
+
+    top: 1px;
+    width: 50%;
+    border-left: 0px;
+    position: relative;
+    transform: skewY(20deg);
+  }
+
+  .window {
+    width: 100%;
+    border-radius: 1px;
+    background-color: white;
+    transition: background 0.2s ease-in-out;
+
+    &:hover {
+      background: hwb(49 51% 1%);
+    }
+  }
+</style>

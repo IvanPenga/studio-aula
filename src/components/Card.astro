@@ -1,0 +1,47 @@
+---
+import ChevronRight from "../assets/icons/ChevronRight.astro";
+import ArrowRight from "../assets/icons/ArrowRight.astro";
+import classNames from "classnames";
+
+const properties = Astro.props;
+const {
+  imageClassName,
+  imageAlt,
+  imageUrl,
+  title,
+  subtitle,
+  className,
+  slug,
+  shortDescription,
+  ...otherProperties
+} = properties;
+---
+
+<article
+  class={classNames(className, 'rounded-sm border-0 overflow-hidden flex flex-col')}
+  {...otherProperties}
+>
+  <a href={slug} class={imageClassName}>
+    <img
+      width={"640"}
+      height={"480"}
+      alt={imageAlt}
+      class=`w-full object-cover card-image h-full`
+      src={imageUrl}
+    />
+  </a>
+  <div class="px-4 pb-4 pt-4 rounded-b-sm border flex-grow">
+    <p class="uppercase text-secondary text-xs">{subtitle}</p>
+    <ArrowRight className={"float-right"} width={24} height={24} />
+    <p class="text-md uppercase font-bold pb-2">{title}</p>
+    <p class="text-secondary line-clamp-4">
+      {shortDescription}
+    </p>
+  </div>
+</article>
+
+<style>
+  .card-image:hover {
+    opacity: 0.9;
+  }
+</style>

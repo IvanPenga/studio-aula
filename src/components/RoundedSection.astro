@@ -1,0 +1,25 @@
+---
+const backgroundColorVariants = {
+  primary: "bg-primary",
+  secondary: "bg-secondary",
+} as const;
+
+type SectionProperties = {
+  backgroundVariant?: keyof typeof backgroundColorVariants;
+};
+
+type Props = astroHTML.JSX.HTMLAttributes &
+  SectionProperties;
+
+const { backgroundVariant, ...properties } = Astro.props;
+---
+
+<section class={backgroundColorVariants[backgroundVariant || 'primary']} {...properties}>
+  <div class="horizontal-page-paddings max-content-width">
+    <div class="bg-red-400 py-6 md:py-8 xl:py-10 px-6 md:px-8 xl:px-10 rounded-md">
+
+
+      <slot />
+    </div>
+  </div>
+</section>

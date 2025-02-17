@@ -1,0 +1,19 @@
+---
+type Props = astroHTML.JSX.SVGAttributes & { className?: string; };
+const properties = Astro.props;
+---
+<svg
+{...properties}
+  width={properties.width || "40px"}
+  height={properties.height || "40px"}
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+class={properties.className}
+>
+  <path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M12.0001 10.0606L6.53039 15.5303L5.46973 14.4696L12.0001 7.93928L18.5304 14.4696L17.4697 15.5303L12.0001 10.0606Z"
+    fill="#1F1F1F"></path>
+</svg>

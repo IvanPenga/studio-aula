@@ -1,0 +1,23 @@
+{
+  "companyName": "",
+  "email": "asdad.asdsada@sadsad.com",
+  "phoneNumber": "+8282828282",
+  "logo": "",
+  "address": {
+    "postalCode": "385",
+    "country": "Croatia",
+    "cityName": "Zagreb",
+    "street": ""
+  },
+  "socialNetworks": [],
+  "founder": "",
+  "foundingDate": "2024",
+  "offerCatalog": {
+    "name": "Architectural Services",
+    "services": [
+      "Residential Design",
+      "Commercial Design",
+      "Sustainable Architecture"
+    ]
+  }
+}

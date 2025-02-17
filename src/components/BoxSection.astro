@@ -1,0 +1,20 @@
+---
+const properties = Astro.props;
+const { title } = properties;
+
+// absolute -top-4 left-1/2 -translate-x-1/2 text-xl bg-primary-300 px-2
+---
+
+<div
+  class="md:max-w-xs rounded-3xl border-primary-500 text-center border-2 relative pt-0 p-4"
+>
+  <div>
+    <p class="text-secondary-700 px-2 text-xl uppercase bg-primary-300 inline-block relative top-0 -translate-y-1/2">
+      {title}
+    </p>
+  </div>
+  <div class="">
+
+  <slot />
+  </div>
+</div>

@@ -1,0 +1,21 @@
+---
+import { translate } from "../translations/translate";
+
+const properties = Astro.props;
+// center - max-w-[600px] m-auto text-center
+// left - max-w-[600px]
+---
+
+<div class="py-10 md:py-16 xl:py-24">
+  <div class="max-w-[600px] m-auto text-center">
+    <p class="text-secondary uppercase mb-2">{translate("page-title")}</p>
+    <h1 class="mb-2">This is <span class="text-secondary-500">my title</span></h1>
+    <p class="text-lg mb-6">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua
+    </p>
+    <a draggable="false" href="#contact" class="button-primary w-full sm:w-60 mb-9">Contact</a>
+    <slot />
+  </div>
+</div>
+<div class="border-b"/>

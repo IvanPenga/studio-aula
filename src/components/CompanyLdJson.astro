@@ -1,0 +1,43 @@
+---
+import pageInfo from "../../configuration/metadata/page-info.json";
+import companyInfo from "../../configuration/metadata/company-info.json";
+import type { LocalBusiness, WithContext, Offer } from "schema-dts";
+
+const services: Offer[] = companyInfo.offerCatalog.services.map((name) => {
+  return {
+    "@type": "Offer",
+    itemOffered: { "@type": "Service", name: name },
+  };
+});
+
+const companyLdJson: WithContext<LocalBusiness> = {
+  "@type": "LocalBusiness",
+  "@context": "https://schema.org",
+  url: pageInfo.url,
+  logo: companyInfo.logo,
+  email: companyInfo.email,
+  name: companyInfo.companyName,
+  description: pageInfo.description,
+  telephone: companyInfo.phoneNumber,
+  sameAs: companyInfo.socialNetworks,
+  foundingDate: companyInfo.foundingDate,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: companyInfo.address.street,
+    postalCode: companyInfo.address.postalCode,
+    addressCountry: companyInfo.address.country,
+    addressLocality: companyInfo.address.cityName,
+  },
+  founder: {
+    "@type": "Person",
+    name: companyInfo.founder,
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    itemListElement: services,
+    name: companyInfo.offerCatalog.name,
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(companyLdJson)} />

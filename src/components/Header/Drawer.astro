@@ -1,0 +1,58 @@
+---
+type Props = astroHTML.JSX.DialogHTMLAttributes;
+const properties = Astro.props;
+---
+
+<div {...properties} class="drawer-navigation" id="drawer-navigation">
+  <div id="drawer-navigation-overlay" class="overlay"></div>
+  <aside class="drawer">helloooooo</aside>
+</div>
+
+<script>
+  import { reverseBooleanAttribute } from "../attributes/attributes";
+
+  const drawer = document.getElementById("drawer-navigation") as HTMLElement;
+  const overlay = document.getElementById(
+    "drawer-navigation-overlay",
+  ) as HTMLElement;
+
+  overlay.addEventListener("click", () => {
+    reverseBooleanAttribute(drawer, "data-open");
+  });
+</script>
+
+<style lang="scss">
+  [data-open="true"] {
+    & .drawer {
+      left: 0;
+    }
+    & .overlay {
+      display: block;
+      opacity: 0.1;
+      left: 0;
+    }
+  }
+
+  .overlay {
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    opacity: 0;
+    left: -100%;
+    z-index: 800;
+    position: fixed;
+    background-color: black;
+    transition: opacity 0.4s ease-in-out;
+  }
+
+  .drawer {
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    width: 90vw;
+    z-index: 900;
+    position: fixed;
+    background-color: yellow;
+    transition: left 0.4s ease-in-out;
+  }
+</style>

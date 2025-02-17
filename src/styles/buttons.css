@@ -1,0 +1,48 @@
+@tailwind components;
+
+@layer components {
+  .button-base {
+    @apply px-3;
+    @apply py-4;
+    @apply rounded-full;
+    @apply inline-block;
+    @apply text-center;
+    @apply inline-block;
+    @apply transition-all;
+
+    border: 2px solid var(--color-primary-500);
+  }
+
+  .button-base:hover {
+    color: var(--color-primary-700);
+    border-color: var(--color-primary-700);
+  }
+
+  .button-base:active {
+    filter: brightness(95%);
+  }
+
+  .button-base:focus-visible {
+    outline-offset: 0px;
+    outline: 1px solid var(--color-primary-700);
+  }
+  
+  .button-primary {
+    @apply button-base;
+    color: var(--color-primary-700);
+    background: white;
+  }
+
+  .button-secondary {
+    @apply button-base;
+    color: white;
+    background: var(--color-primary-700);
+  }
+
+  .button-white {
+    @apply button-base;
+    color: var(--color-primary-700);
+    background-color: white;
+  }
+}
+

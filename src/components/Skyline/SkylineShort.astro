@@ -1,0 +1,32 @@
+---
+import classNames from "classnames";
+import Building from "./Building.astro";
+const properties = Astro.props;
+---
+
+<div
+  class={classNames(properties.className, "overflow-hidden aspect-video  z-0")}
+>
+  <div class="flex items-end h-full relative top-4">
+    <Building
+      windows={16}
+      windowColumns={4}
+      className="h-[40%] left-[20px] z-30"
+    />
+    <Building
+      windows={21}
+      windowColumns={3}
+      className="h-[70%] left-[52px] z-50"
+    />
+    <Building
+      windows={8}
+      windowColumns={1}
+      className="h-[90%] left-[10px]  z-10"
+    />
+    <Building
+      windows={5}
+      windowColumns={5}
+      className="h-[30%] right-[20px] z-50"
+    />
+  </div>
+</div>

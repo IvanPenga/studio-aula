@@ -1,0 +1,11 @@
+---
+import classnames from "classnames";
+
+type Props = astroHTML.JSX.ButtonHTMLAttributes;
+
+const { class: className, type, ...properties } = Astro.props;
+---
+
+<button {...properties} type="submit" class={classnames(className, "button-primary")}>
+  <slot />
+</button>
