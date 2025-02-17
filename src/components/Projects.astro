@@ -54,14 +54,15 @@ const classes = {
   @use "../styles/media.scss";
 
   .projects-grid {
-    gap: 1rem;
     display: grid;
     grid-template-columns: 1fr;
-    grid-auto-flow: dense;
+    row-gap: 1rem;
 
     @include media.query("small") {
+      gap: 1rem;
       grid-template-columns: 1fr 1fr 1fr;
       grid-auto-rows: 1fr;
+      grid-auto-flow: dense;
     }
   }
 </style>
