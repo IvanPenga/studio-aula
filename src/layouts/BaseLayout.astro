@@ -13,9 +13,10 @@ import ContactBar from "../components/ContactBar.astro";
 <!doctype html>
 <html lang={i18next.language} class="text-primary">
   <head>
+    <base href={import.meta.env.BASE_URL} />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{t("page-title")}</title>
     <meta property="og:title" content={pageInfo.title} />
